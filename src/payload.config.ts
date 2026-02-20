@@ -37,7 +37,14 @@ export default buildConfig({
   plugins: [
     s3Storage({
       collections: {
-        media: true,
+        media: {
+          disablePayloadAccessControl: true,
+          generateFileURL: ({ filename, prefix }) => {
+            const publicUrl = process.env.R2_PUBLIC_URL || ''
+            const parts = [publicUrl, prefix, filename].filter(Boolean)
+            return parts.join('/')
+          },
+        },
       },
       bucket: process.env.R2_BUCKET || '',
       config: {
