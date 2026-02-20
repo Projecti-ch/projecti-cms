@@ -38,7 +38,7 @@ export default buildConfig({
     s3Storage({
       collections: {
         media: {
-          disablePayloadAccessControl: true,
+          disableLocalStorage: true,
           generateFileURL: ({ filename, prefix }) => {
             const publicUrl = process.env.R2_PUBLIC_URL || ''
             const parts = [publicUrl, prefix, filename].filter(Boolean)
