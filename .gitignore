@@ -42,6 +42,11 @@ next-env.d.ts
 
 /media
 
+# docs
+/docs
+/src/scripts
+/src/original-cms-entries
+
 # Playwright
 node_modules/
 /test-results/
