@@ -6,6 +6,9 @@ export const Projects: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'featured', 'date'],
   },
+  access: {
+    read: () => true, // Allow public read access for marketing website
+  },
   versions: {
     drafts: true,
   },

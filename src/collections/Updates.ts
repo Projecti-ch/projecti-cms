@@ -6,6 +6,9 @@ export const Updates: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'date'],
   },
+  access: {
+    read: () => true, // Allow public read access for marketing website
+  },
   versions: {
     drafts: true,
   },
