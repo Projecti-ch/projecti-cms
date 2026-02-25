@@ -281,6 +281,9 @@ export interface Update {
   metaDescription?: string | null;
   featuredImage?: (number | null) | Media;
   date?: string | null;
+  /**
+   * Legacy content field - use sections below for new updates
+   */
   content?: {
     root: {
       type: string;
@@ -296,6 +299,69 @@ export interface Update {
     };
     [k: string]: unknown;
   } | null;
+  sectionOne?: {
+    title?: string | null;
+    body?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    image?: (number | null) | Media;
+  };
+  sectionTwo?: {
+    title?: string | null;
+    body?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    image?: (number | null) | Media;
+    image2?: (number | null) | Media;
+  };
+  sectionThree?: {
+    title?: string | null;
+    body?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  gallery?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -512,6 +578,33 @@ export interface UpdatesSelect<T extends boolean = true> {
   featuredImage?: T;
   date?: T;
   content?: T;
+  sectionOne?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        image?: T;
+      };
+  sectionTwo?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        image?: T;
+        image2?: T;
+      };
+  sectionThree?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+      };
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

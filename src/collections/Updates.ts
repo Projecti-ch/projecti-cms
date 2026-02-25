@@ -50,6 +50,87 @@ export const Updates: CollectionConfig = {
     {
       name: 'content',
       type: 'richText',
+      admin: {
+        description: 'Legacy content field - use sections below for new updates',
+      },
+    },
+    // Section One
+    {
+      name: 'sectionOne',
+      label: 'Section One',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+        },
+        {
+          name: 'body',
+          type: 'richText',
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+        },
+      ],
+    },
+    // Section Two
+    {
+      name: 'sectionTwo',
+      label: 'Section Two',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+        },
+        {
+          name: 'body',
+          type: 'richText',
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+        },
+        {
+          name: 'image2',
+          label: 'Image 2',
+          type: 'upload',
+          relationTo: 'media',
+        },
+      ],
+    },
+    // Section Three
+    {
+      name: 'sectionThree',
+      label: 'Section Three',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+        },
+        {
+          name: 'body',
+          type: 'richText',
+        },
+      ],
+    },
+    // Gallery
+    {
+      name: 'gallery',
+      type: 'array',
+      maxRows: 6,
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
     },
   ],
 }
