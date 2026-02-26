@@ -47,75 +47,76 @@ export const Updates: CollectionConfig = {
       name: 'date',
       type: 'date',
     },
+    // Content Sections (dynamic array)
     {
-      name: 'content',
-      type: 'richText',
+      name: 'sections',
+      label: 'Content Sections',
+      type: 'array',
       admin: {
-        description: 'Legacy content field - use sections below for new updates',
+        description: 'Add as many content sections as needed',
       },
-    },
-    // Section One
-    {
-      name: 'sectionOne',
-      label: 'Section One',
-      type: 'group',
       fields: [
         {
           name: 'title',
+          label: 'Section Title',
           type: 'text',
         },
         {
           name: 'body',
+          label: 'Section Content',
           type: 'richText',
         },
         {
           name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-        },
-      ],
-    },
-    // Section Two
-    {
-      name: 'sectionTwo',
-      label: 'Section Two',
-      type: 'group',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-        },
-        {
-          name: 'body',
-          type: 'richText',
-        },
-        {
-          name: 'image',
+          label: 'Image',
           type: 'upload',
           relationTo: 'media',
         },
         {
           name: 'image2',
-          label: 'Image 2',
+          label: 'Image 2 (Optional)',
           type: 'upload',
           relationTo: 'media',
+          admin: {
+            description: 'Add a second image for side-by-side layout',
+          },
         },
       ],
     },
-    // Section Three
+    // Legacy fields - hidden, kept for migration
+    {
+      name: 'content',
+      type: 'richText',
+      admin: { hidden: true },
+    },
+    {
+      name: 'sectionOne',
+      type: 'group',
+      admin: { hidden: true },
+      fields: [
+        { name: 'title', type: 'text' },
+        { name: 'body', type: 'richText' },
+        { name: 'image', type: 'upload', relationTo: 'media' },
+      ],
+    },
+    {
+      name: 'sectionTwo',
+      type: 'group',
+      admin: { hidden: true },
+      fields: [
+        { name: 'title', type: 'text' },
+        { name: 'body', type: 'richText' },
+        { name: 'image', type: 'upload', relationTo: 'media' },
+        { name: 'image2', type: 'upload', relationTo: 'media' },
+      ],
+    },
     {
       name: 'sectionThree',
-      label: 'Section Three',
       type: 'group',
+      admin: { hidden: true },
       fields: [
-        {
-          name: 'title',
-          type: 'text',
-        },
-        {
-          name: 'body',
-          type: 'richText',
-        },
+        { name: 'title', type: 'text' },
+        { name: 'body', type: 'richText' },
       ],
     },
     // Gallery

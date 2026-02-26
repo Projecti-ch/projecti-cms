@@ -202,6 +202,35 @@ export interface Project {
   category: 'planung' | 'analyse';
   date?: string | null;
   featured?: boolean | null;
+  /**
+   * Add as many content sections as needed
+   */
+  sections?:
+    | {
+        title?: string | null;
+        body?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        image?: (number | null) | Media;
+        /**
+         * Add a second image for side-by-side layout
+         */
+        image2?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   sectionOne?: {
     title?: string | null;
     body?: {
@@ -282,8 +311,34 @@ export interface Update {
   featuredImage?: (number | null) | Media;
   date?: string | null;
   /**
-   * Legacy content field - use sections below for new updates
+   * Add as many content sections as needed
    */
+  sections?:
+    | {
+        title?: string | null;
+        body?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        image?: (number | null) | Media;
+        /**
+         * Add a second image for side-by-side layout
+         */
+        image2?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   content?: {
     root: {
       type: string;
@@ -535,6 +590,15 @@ export interface ProjectsSelect<T extends boolean = true> {
   category?: T;
   date?: T;
   featured?: T;
+  sections?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        image?: T;
+        image2?: T;
+        id?: T;
+      };
   sectionOne?:
     | T
     | {
@@ -577,6 +641,15 @@ export interface UpdatesSelect<T extends boolean = true> {
   metaDescription?: T;
   featuredImage?: T;
   date?: T;
+  sections?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        image?: T;
+        image2?: T;
+        id?: T;
+      };
   content?: T;
   sectionOne?:
     | T

@@ -62,68 +62,71 @@ export const Projects: CollectionConfig = {
       type: 'checkbox',
       defaultValue: false,
     },
-    // Section One
+    // Content Sections (dynamic array)
     {
-      name: 'sectionOne',
-      label: 'Section One',
-      type: 'group',
+      name: 'sections',
+      label: 'Content Sections',
+      type: 'array',
+      admin: {
+        description: 'Add as many content sections as needed',
+      },
       fields: [
         {
           name: 'title',
+          label: 'Section Title',
           type: 'text',
         },
         {
           name: 'body',
+          label: 'Section Content',
           type: 'richText',
         },
         {
           name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-        },
-      ],
-    },
-    // Section Two
-    {
-      name: 'sectionTwo',
-      label: 'Section Two',
-      type: 'group',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-        },
-        {
-          name: 'body',
-          type: 'richText',
-        },
-        {
-          name: 'image',
+          label: 'Image',
           type: 'upload',
           relationTo: 'media',
         },
         {
           name: 'image2',
-          label: 'Image 2',
+          label: 'Image 2 (Optional)',
           type: 'upload',
           relationTo: 'media',
+          admin: {
+            description: 'Add a second image for side-by-side layout',
+          },
         },
       ],
     },
-    // Section Three
+    // Legacy section fields - hidden, kept for migration
+    {
+      name: 'sectionOne',
+      type: 'group',
+      admin: { hidden: true },
+      fields: [
+        { name: 'title', type: 'text' },
+        { name: 'body', type: 'richText' },
+        { name: 'image', type: 'upload', relationTo: 'media' },
+      ],
+    },
+    {
+      name: 'sectionTwo',
+      type: 'group',
+      admin: { hidden: true },
+      fields: [
+        { name: 'title', type: 'text' },
+        { name: 'body', type: 'richText' },
+        { name: 'image', type: 'upload', relationTo: 'media' },
+        { name: 'image2', type: 'upload', relationTo: 'media' },
+      ],
+    },
     {
       name: 'sectionThree',
-      label: 'Section Three',
       type: 'group',
+      admin: { hidden: true },
       fields: [
-        {
-          name: 'title',
-          type: 'text',
-        },
-        {
-          name: 'body',
-          type: 'richText',
-        },
+        { name: 'title', type: 'text' },
+        { name: 'body', type: 'richText' },
       ],
     },
     // Gallery
