@@ -46,12 +46,12 @@ export const Projects: CollectionConfig = {
     {
       name: 'category',
       label: 'Project Category',
-      type: 'select',
-      options: [
-        { label: 'Planung', value: 'planung' },
-        { label: 'Analyse', value: 'analyse' },
-      ],
+      type: 'relationship',
+      relationTo: 'categories',
       required: true,
+      admin: {
+        description: 'Select or create a category for this project',
+      },
     },
     {
       name: 'date',
